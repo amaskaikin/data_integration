@@ -1,0 +1,306 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://example.org/voc#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://example.org/voc#">
+    <Prefix name="" IRI="http://example.org/voc#"/>
+    <Prefix name="ex" IRI="http://example.org/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="foaf" IRI="http://xmlns.com/foaf/0.1/"/>
+    <Prefix name="obda" IRI="https://w3id.org/obda/vocabulary#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="Club"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Medical"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="managesAt"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="HeadCoach"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="coaches"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Player"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="worksAt"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Personal"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="coachedBy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="foaf:firstName"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="headCoachedBy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="PlayerPosition"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="title"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="participatesIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasPosition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Coach"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="SportManager"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Other"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="foaf:age"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="assistanceCoaches"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="League"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="assistanceCoachedBy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="foaf:club_id"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ClubMember"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="foaf:lastName"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="positionUsedBy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="AssistantCoach"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="HeadManager"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="headCoaches"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Manager"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="foaf:Person"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="managedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="plays"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="AssistantCoach"/>
+        <Class IRI="Coach"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ClubMember"/>
+        <Class abbreviatedIRI="foaf:Person"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Coach"/>
+        <Class IRI="ClubMember"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="HeadCoach"/>
+        <Class IRI="Coach"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="HeadManager"/>
+        <Class IRI="Manager"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Manager"/>
+        <Class IRI="Personal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Medical"/>
+        <Class IRI="Personal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Other"/>
+        <Class IRI="Personal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Personal"/>
+        <Class IRI="ClubMember"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Player"/>
+        <Class abbreviatedIRI="foaf:Person"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="SportManager"/>
+        <Class IRI="Manager"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="Club"/>
+        <Class IRI="League"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="Club"/>
+        <Class abbreviatedIRI="foaf:Person"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="League"/>
+        <Class abbreviatedIRI="foaf:Person"/>
+    </DisjointClasses>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="assistanceCoachedBy"/>
+        <ObjectProperty IRI="coachedBy"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="assistanceCoaches"/>
+        <ObjectProperty IRI="coaches"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="headCoachedBy"/>
+        <ObjectProperty IRI="coachedBy"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="headCoaches"/>
+        <ObjectProperty IRI="coaches"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="managesAt"/>
+        <ObjectProperty IRI="worksAt"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="assistanceCoachedBy"/>
+        <ObjectProperty IRI="assistanceCoaches"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="coachedBy"/>
+        <ObjectProperty IRI="coaches"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="hasPosition"/>
+        <ObjectProperty IRI="positionUsedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="headCoachedBy"/>
+        <ObjectProperty IRI="headCoaches"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="managedBy"/>
+        <ObjectProperty IRI="managesAt"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="assistanceCoaches"/>
+        <Class IRI="AssistantCoach"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="coaches"/>
+        <Class IRI="Coach"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasPosition"/>
+        <Class IRI="Player"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="headCoaches"/>
+        <Class IRI="HeadCoach"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="managesAt"/>
+        <Class IRI="Manager"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="participatesIn"/>
+        <Class IRI="Club"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="plays"/>
+        <Class IRI="Player"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="plays"/>
+        <Class abbreviatedIRI="foaf:Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="worksAt"/>
+        <Class IRI="Personal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="assistanceCoaches"/>
+        <Class IRI="Club"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="coaches"/>
+        <Class IRI="Club"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasPosition"/>
+        <Class IRI="PlayerPosition"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="headCoaches"/>
+        <Class IRI="Club"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="managesAt"/>
+        <Class IRI="Club"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="participatesIn"/>
+        <Class IRI="League"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="plays"/>
+        <Class IRI="Club"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="worksAt"/>
+        <Class IRI="Club"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="foaf:firstName"/>
+        <Class abbreviatedIRI="foaf:Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="foaf:lastName"/>
+        <Class abbreviatedIRI="foaf:Person"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="title"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="foaf:firstName"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="foaf:lastName"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

@@ -1,0 +1,113 @@
+[PrefixDeclaration]
+:		http://example.org/voc#
+ex:		http://example.org/
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+foaf:		http://xmlns.com/foaf/0.1/
+obda:		https://w3id.org/obda/vocabulary#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[MappingDeclaration] @collection [[
+mappingId	sportboxru-club
+target		:sportboxru/club/{club_id} a :Club ; :title {title}^^xsd:string . 
+source		SELECT * FROM "SPORTBOXRU"."CLUB"
+
+mappingId	sportboxru_plays
+target		:sportboxru/players/{player_id} :plays :sportboxru/club/{club_id} . 
+source		SELECT PLAYER_ID, CLUB_ID FROM "SPORTBOXRU"."PLAYERS"
+
+mappingId	sportboxru-hcoach
+target		:sportboxru/club_members/{club_member} a :HeadCoach ; foaf:firstName {fname}^^xsd:string ; foaf:lastName {lname}^^xsd:string . 
+source		SELECT * FROM "SPORTBOXRU"."CLUB_MEMBERS" WHERE "SEVERITY" = 1
+
+mappingId	sportboxru-acoach
+target		:sportboxru/club_members/{club_member} a :AssistantCoach ; foaf:firstName {fname}^^xsd:string ; foaf:lastName {lname}^^xsd:string . 
+source		SELECT * FROM "SPORTBOXRU"."CLUB_MEMBERS" WHERE "SEVERITY" = 2
+
+mappingId	sportboxru-headmanager
+target		:sportboxru/club_members/{club_member} a :HeadManager ; foaf:firstName {fname}^^xsd:string ; foaf:lastName {lname}^^xsd:string . 
+source		SELECT * FROM "SPORTBOXRU"."CLUB_MEMBERS" WHERE "SEVERITY" = 3
+
+mappingId	sportboxru-sportmanager
+target		:sportboxru/club_members/{club_member} a :HeadManager ; foaf:firstName {fname}^^xsd:string ; foaf:lastName {lname}^^xsd:string . 
+source		SELECT * FROM "SPORTBOXRU"."CLUB_MEMBERS" WHERE "SEVERITY" = 4
+
+mappingId	sportboxru-medical
+target		:sportboxru/club_members/{club_member} a :Medical ; foaf:firstName {fname}^^xsd:string ; foaf:lastName {lname}^^xsd:string . 
+source		SELECT * FROM "SPORTBOXRU"."CLUB_MEMBERS" WHERE "SEVERITY" = 5
+
+mappingId	sportboxru_managesAt
+target		:sportboxru/club_members/{club_member} :managesAt :sportboxru/club/{club_id} . 
+source		SELECT CLUB_MEMBER, CLUB_ID FROM "SPORTBOXRU"."CLUB_MEMBERS" WHERE "SEVERITY" IN(3,4)
+
+mappingId	sportboxru_hcoaches
+target		:sportboxru/club_members/{club_member} :headCoaches :sportboxru/club/{club_id} . 
+source		SELECT CLUB_MEMBER, CLUB_ID FROM "SPORTBOXRU"."CLUB_MEMBERS" WHERE "SEVERITY" = 1
+
+mappingId	sportboxru_acoaches
+target		:sportboxru/club_members/{club_member} :assistanceCoaches :sportboxru/club/{club_id} . 
+source		SELECT CLUB_MEMBER, CLUB_ID FROM "SPORTBOXRU"."CLUB_MEMBERS" WHERE "SEVERITY" = 2
+
+mappingId	sportboxru_worksAt
+target		:sportboxru/club_members/{club_member} :worksAt :sportboxru/club/{club_id} . 
+source		SELECT CLUB_MEMBER, CLUB_ID FROM "SPORTBOXRU"."CLUB_MEMBERS" WHERE "SEVERITY" IN(5,6)
+
+mappingId	sportboxru_participatesIn
+target		:sportboxru/club/{club_id} :participatesIn :sportboxru/league/{champ_id} . 
+source		SELECT CLUB_ID, CHAMP_ID FROM "SPORTBOXRU"."CHAMP2CLUB"
+
+mappingId	sportboxru-league
+target		:sportboxru/league/{champ_id} a :League ; :title {title}^^xsd:string . 
+source		SELECT * FROM "SPORTBOXRU"."CHAMP"
+
+mappingId	soccerru-league
+target		:soccerru/league/{league_id} a :League ; :title {title}^^xsd:string . 
+source		SELECT LEAGUE_ID, TITLE FROM "SOCCERRU"."LEAGUE"
+
+mappingId	soccerru-person
+target		:soccerru/person/{person_id} a foaf:Person ; foaf:firstName {firstname}^^xsd:string ; foaf:lastName {lastname}^^xsd:string . 
+source		SELECT * FROM SOCCERRU.PERSON
+
+mappingId	soccerru-club; participatresIn; headcoachedBy
+target		:soccerru/fc/{fc_id} a :Club ; :title {name}^^xsd:string ; :participatesIn :soccerru/league/{league} ; :headCoachedBy :soccerru/person/{head_coach_id} . 
+source		SELECT * FROM "SOCCERRU"."FC"
+
+mappingId	soccerru_plays
+target		:soccerru/players/{player_id} :plays :soccerru/fc/{fc_id} . 
+source		SELECT PLAYER_ID, FC_ID FROM SOCCERRU.CLUB2PLAYERS
+
+mappingId	soccerru_assistanceCoaches
+target		:soccerru/person/{person_id} :assistanceCoaches :soccerru/fc/{fc_id} . 
+source		SELECT PERSON_ID, FC_ID FROM SOCCERRU.CLUB2ASSISTANCE
+
+mappingId	soccerru-worksAt
+target		:soccerru/person/{person_id} :worksAt :soccerru/fc/{fc_id} . 
+source		SELECT PERSON_ID, FC_ID FROM SOCCERRU.CLUB2MANAGER
+
+mappingId	soccerru-position
+target		:soccerru/position/{position_id} a :PlayerPosition ; :title {name}^^xsd:string . 
+source		SELECT * FROM SOCCERRU.POSITION
+
+mappingId	sportboxru-position
+target		:sportboxru/position/{position_id} a :PlayerPosition ; :title {title}^^xsd:string . 
+source		SELECT * FROM SPORTBOXRU.POSITION
+
+mappingId	soccerru-player
+target		:soccerru/players/{player_id} a :Player ; foaf:firstName {firstname}^^xsd:string ; foaf:lastName {lastname}^^xsd:string ; :hasPosition :soccerru/position/{position} . 
+source		SELECT * FROM SOCCERRU.PLAYERS
+
+mappingId	sportboxru-player
+target		:sportboxru/players/{player_id} a :Player ; foaf:firstName {fname}^^xsd:string ; foaf:lastName {lname}^^xsd:string ; :hasPosition :sportboxru/position/{position_id} . 
+source		SELECT * FROM "SPORTBOXRU"."PLAYERS"
+
+mappingId	soccerru_managesAt
+target		:soccerru/person/{person_id} :managesAt :soccerru/fc/{fc_id} . 
+source		SELECT PERSON_ID, FC_ID FROM SOCCERRU.CLUB2MANAGER
+
+mappingId	soccerru_hcoaches
+target		:soccerru/person/{HEAD_COACH_ID} :headCoaches :soccerru/fc/{fc_id} . 
+source		SELECT HEAD_COACH_ID, FC_ID FROM "SOCCERRU"."FC"
+]]
+
